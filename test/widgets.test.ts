@@ -9,6 +9,12 @@ describe('widgets', () => {
     expect(Object.keys(modules).length).toBeGreaterThan(0);
   });
 
+  it('gives every widget a unique id', () => {
+    const ids = Object.values(modules).map((mod) => mod.default.id);
+    const duplicates = ids.filter((id, i) => ids.indexOf(id) !== i);
+    expect(duplicates).toEqual([]);
+  });
+
   for (const [path, mod] of Object.entries(modules)) {
     it(`${path} renders an element with data-widget equal to its id`, () => {
       const widget = mod.default;

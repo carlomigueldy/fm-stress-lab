@@ -4,7 +4,7 @@ Disposable scratch web app for concurrency stress tests. Safe to delete.
 
 ## How to run
 
-Requires Node 22 or newer.
+Requires Node 22.22.2+, 24.15+, or 26+.
 
 ```sh
 npm ci          # install dependencies
@@ -19,5 +19,5 @@ npm run preview # serve dist/ locally
 
 Create one file, `src/widgets/<name>.ts`, that default-exports an object matching
 `src/widget.ts` (`id`, `title`, `render()`). The widget's `render()` must return an
-element with `data-widget` set to its `id`. Widgets are discovered automatically and
+element with `data-widget` set to its `id`, and the `id` must be unique across widgets. Widgets are discovered automatically and
 rendered sorted by `id` inside `<main id="widgets">`. No shared file needs editing.
